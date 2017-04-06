@@ -34,6 +34,7 @@ class PokedoxViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.tableView.dataSource = self
     }
 
+    //To hide the status bar
     override var prefersStatusBarHidden: Bool {
         return true
     }

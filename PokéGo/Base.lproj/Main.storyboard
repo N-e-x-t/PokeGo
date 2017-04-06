@@ -26,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="frK-Fj-RSV">
-                                <rect key="frame" x="317" y="28" width="50" height="50"/>
+                                <rect key="frame" x="319" y="40" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="ZSG-Fg-87q"/>
                                     <constraint firstAttribute="width" constant="50" id="bff-ye-lbp"/>
@@ -49,16 +49,25 @@
                                     <segue destination="FkX-7l-xjU" kind="showDetail" id="NOo-vJ-v6m"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PokemonText" translatesAutoresizingMaskIntoConstraints="NO" id="ufg-PA-tf3">
+                                <rect key="frame" x="102.5" y="0.0" width="170" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="170" id="Don-py-sVb"/>
+                                    <constraint firstAttribute="height" constant="90" id="hsT-z1-tsI"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="frK-Fj-RSV" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" constant="8" id="FFX-dx-yAT"/>
+                            <constraint firstItem="ufg-PA-tf3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Bm1-4L-rSA"/>
+                            <constraint firstItem="frK-Fj-RSV" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" constant="10" id="FFX-dx-yAT"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="iNw-TU-gA9" secondAttribute="bottom" constant="20" id="FjN-I2-YBm"/>
-                            <constraint firstItem="frK-Fj-RSV" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="OpD-pe-l9c"/>
+                            <constraint firstItem="frK-Fj-RSV" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="OpD-pe-l9c"/>
                             <constraint firstItem="07O-6v-aeo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="S6J-QY-Z9T"/>
                             <constraint firstItem="07O-6v-aeo" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="TwC-Z7-8Io"/>
                             <constraint firstItem="07O-6v-aeo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WJ0-md-z2x"/>
                             <constraint firstItem="07O-6v-aeo" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="egR-Mo-Pva"/>
+                            <constraint firstItem="ufg-PA-tf3" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="lDK-2b-lOK"/>
                             <constraint firstItem="iNw-TU-gA9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nBl-pQ-tYm"/>
                             <constraint firstAttribute="trailing" secondItem="07O-6v-aeo" secondAttribute="trailing" id="phY-W4-gGS"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="07O-6v-aeo" secondAttribute="bottom" id="q5L-Rr-a4A"/>
@@ -132,6 +141,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="PokemonText" width="1023" height="640"/>
         <image name="backpack" width="512" height="512"/>
         <image name="compass" width="512" height="512"/>
         <image name="map" width="512" height="512"/>
