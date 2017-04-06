@@ -40,6 +40,20 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             //Updates the user location
             self.manager.startUpdatingLocation()
             
+            //Equatation to find the annotation
+            Timer.scheduledTimer(withTimeInterval: 4, repeats: true, block: {
+                (timer) in
+                if let coordinate = self.manager.location?.coordinate {
+                    let annotation = MKPointAnnotation()
+                    annotation.coordinate = coordinate
+                    annotation.coordinate.latitude += (Double(arc4random_uniform(1000)) - 500) / 300000.0
+                    annotation.coordinate.longitude += (Double(arc4random_uniform(1000)) - 500) / 300000.0
+                    
+                    self.mapView.addAnnotation(annotation)
+                    }
+                }
+            )
+            
         }
         else {
             self.manager.requestWhenInUseAuthorization()
