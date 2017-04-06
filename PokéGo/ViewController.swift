@@ -10,11 +10,14 @@ import UIKit
 import MapKit
 
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
+class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+    
+    var pokemon : [Pokemon] = []
 
     @IBOutlet weak var mapView: MKMapView!
     
     @IBAction func userLocationRepositioningButtonPress(_ sender: Any) {
+        
         // Sets the region of view to display
         let region = MKCoordinateRegionMakeWithDistance(self.manager.location!.coordinate, 400, 400)
         self.mapView.setRegion(region, animated: true)
@@ -40,11 +43,24 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             //Updates the user location
             self.manager.startUpdatingLocation()
             
+            //Used to show annotation as images
+            self.mapView.delegate = self
+            
+            //Brings all pokemon from the CDHelper file
+            pokemon = bringAllPokemon()
+            
             //Equatation to find the annotation
             Timer.scheduledTimer(withTimeInterval: 4, repeats: true, block: {
                 (timer) in
                 if let coordinate = self.manager.location?.coordinate {
-                    let annotation = MKPointAnnotation()
+                    
+                    //Setting pokemon images to annotation
+                    let randomPokemon = Int(arc4random_uniform(UInt32(self.pokemon.count)))
+                    
+                    let pokemon = self.pokemon[randomPokemon]
+                    
+                    let annotation = PokemonAnnotation(coordinate: coordinate, pokemon: pokemon)
+                    
                     annotation.coordinate = coordinate
                     annotation.coordinate.latitude += (Double(arc4random_uniform(1000)) - 500) / 300000.0
                     annotation.coordinate.longitude += (Double(arc4random_uniform(1000)) - 500) / 300000.0
@@ -59,6 +75,27 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             self.manager.requestWhenInUseAuthorization()
         }
     }
+    
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: nil)
+        
+        if annotation is MKUserLocation {
+            annotationView .image = #imageLiteral(resourceName: "player")
+        } else {
+            let pokemon = (annotation as! PokemonAnnotation).pokemon
+            annotationView.image = UIImage(named: pokemon.imageFileName!)
+        }
+        
+        var newFrame = annotationView.frame
+        newFrame.size.width = 50
+        newFrame.size.height = 50
+        annotationView.frame = newFrame
+        
+        return annotationView
+    }
+    
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         

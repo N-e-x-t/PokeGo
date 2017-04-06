@@ -17,10 +17,21 @@ class PokedoxViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.dismiss(animated: true, completion: nil)
     }
     
+    
+    var caughtPokemon : [Pokemon] = []
+    var uncaughtPokemon : [Pokemon] = []
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        caughtPokemon = getAllCaughtPokemon()
+        uncaughtPokemon = getAllUncaughtPokemon()
+        
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
     }
 
     override var prefersStatusBarHidden: Bool {
@@ -33,15 +44,41 @@ class PokedoxViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
 
-    // TableView Function
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Int()
+    // TableView Functions
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
     }
     
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return caughtPokemon.count
+        } else {
+            return uncaughtPokemon.count
+        }
+    }
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "Caught Pokemon"
+        } else {
+            return "Uncaught Pokemon"
+        }
+    }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        var pokemon : Pokemon
+        
+        if indexPath.section == 0 {
+            pokemon = self.caughtPokemon[indexPath.row]
+        } else {
+            pokemon = self.uncaughtPokemon[indexPath.row]
+        }
+        
+        cell.textLabel?.text = pokemon.name
+        cell.imageView?.image = UIImage(named: pokemon.imageFileName!)
+        return cell
     }
     
     
