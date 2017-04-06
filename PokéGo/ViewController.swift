@@ -12,6 +12,7 @@ import MapKit
 
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
+    //Initialized empty array for Pokemon
     var pokemon : [Pokemon] = []
 
     @IBOutlet weak var mapView: MKMapView!
@@ -31,13 +32,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.manager.delegate = self
         
+        self.manager.delegate = self
         
         //Authorization status and location setting
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
             
-            //Shows the blue spot for user location
+            //Shows the blue spot for user location, which is later changed to a different annotation, ie. an image
             self.mapView.showsUserLocation = true
             
             //Updates the user location
@@ -88,6 +89,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             annotationView.image = UIImage(named: pokemon.imageFileName!)
         }
         
+        //Resizes the annotation images to a particular size
         var newFrame = annotationView.frame
         newFrame.size.width = 50
         newFrame.size.height = 50

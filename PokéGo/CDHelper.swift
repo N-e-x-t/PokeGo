@@ -9,6 +9,7 @@
 import CoreData
 import UIKit
 
+//This function creates all pokemons
 func makeAllPokemon() {
     
     makePokemon(name: "Abra", withThe: "abra")
@@ -24,8 +25,10 @@ func makeAllPokemon() {
     
     }
 
+//This function creates a pokemon, which is used to create multiple pokemons in the above functon, makeAllPokemon
 func makePokemon(name: String, withThe imageName: String) {
     
+    //Context takes access from the AppDelegate, as it cannot access data directly
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     let pokemon = Pokemon(context: context)
@@ -34,8 +37,10 @@ func makePokemon(name: String, withThe imageName: String) {
     
 }
 
-
+//This funtions fetches the pokemons to the empty array which is created in the ViewController
 func bringAllPokemon() -> [Pokemon] {
+    
+    //Context takes access from the AppDelegate, as it cannot access data directly
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     
@@ -55,7 +60,10 @@ func bringAllPokemon() -> [Pokemon] {
     return []
 }
 
+//This function returns the pokemons which are caught
 func getAllCaughtPokemon() -> [Pokemon] {
+    
+    //Context takes access from the AppDelegate, as it cannot access data directly
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     let fetchRequest = Pokemon.fetchRequest() as NSFetchRequest<Pokemon>
@@ -72,7 +80,10 @@ func getAllCaughtPokemon() -> [Pokemon] {
     
     }
 
+//This function returns the pokemons which are uncaught
 func getAllUncaughtPokemon() -> [Pokemon] {
+    
+    //Context takes access from the AppDelegate, as it cannot access data directly
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     let fetchRequest = Pokemon.fetchRequest() as NSFetchRequest<Pokemon>
