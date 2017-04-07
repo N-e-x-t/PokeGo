@@ -107,7 +107,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         let region = MKCoordinateRegionMakeWithDistance(self.manager.location!.coordinate, 400, 400)
         self.mapView.setRegion(region, animated: true)
         self.manager.startUpdatingLocation()
-            //update += 4
+        update += 4
         }
         else {
             self.manager.stopUpdatingLocation()
@@ -118,6 +118,43 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     //To hide the status bar
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    //To select an annotation/pokemon from the map
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+        mapView.deselectAnnotation(view.annotation!, animated: true)
+        
+        if view.annotation is MKUserLocation {
+            return
+        }
+        
+        //It zooms the region around the annotation/pokemon which is clicked
+        let region = MKCoordinateRegionMakeWithDistance((view.annotation?.coordinate)!, 50, 50)
+        self.mapView.setRegion(region, animated: true)
+        
+        //Setting a range around the player/user in which the player can catch pokemons
+        if let coordinate = self.manager.location?.coordinate {
+            if MKMapRectContainsPoint(mapView.visibleMapRect, MKMapPointForCoordinate(coordinate)) {
+               
+                //To send the pokemon to the BattleScene
+               let battle = BattleViewController()
+                
+                //To get a pokemon to send to the BattleScene
+                let pokemon = (view.annotation as! PokemonAnnotation).pokemon
+                battle.pokemon = pokemon
+                
+                
+               self.present(battle, animated: true, completion: nil)
+                
+               print("in range")
+            } else {
+                print ("Out of range")
+            }
+        }
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

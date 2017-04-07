@@ -17,6 +17,7 @@ func makeAllPokemon() {
     makePokemon(name: "Bullbasaur", withThe: "bullbasaur")
     makePokemon(name: "Caterpie", withThe: "caterpie")
     makePokemon(name: "Charmander", withThe: "charmander")
+    makePokemon(name: "Charizard", withThe: "charizard")
     makePokemon(name: "Dratini", withThe: "dratini")
     makePokemon(name: "Eevee", withThe: "eevee")
     makePokemon(name: "Jigglypuff", withThe: "jigglypuff")

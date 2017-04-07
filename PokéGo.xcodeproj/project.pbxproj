@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0114458E1E976539008FD03D /* BattleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0114458D1E976539008FD03D /* BattleScene.swift */; };
+		011445901E976564008FD03D /* BattleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0114458F1E976564008FD03D /* BattleViewController.swift */; };
 		01CBE57B1E96001600120793 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CBE57A1E96001600120793 /* AppDelegate.swift */; };
 		01CBE57D1E96001600120793 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CBE57C1E96001600120793 /* ViewController.swift */; };
 		01CBE5801E96001600120793 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01CBE57E1E96001600120793 /* Main.storyboard */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0114458D1E976539008FD03D /* BattleScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleScene.swift; sourceTree = "<group>"; };
+		0114458F1E976564008FD03D /* BattleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleViewController.swift; sourceTree = "<group>"; };
 		01CBE5771E96001600120793 /* PokéGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PokéGo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01CBE57A1E96001600120793 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01CBE57C1E96001600120793 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +73,8 @@
 				01CBE57A1E96001600120793 /* AppDelegate.swift */,
 				01CBE57C1E96001600120793 /* ViewController.swift */,
 				01CBE5921E963F0900120793 /* PokedoxViewController.swift */,
+				0114458D1E976539008FD03D /* BattleScene.swift */,
+				0114458F1E976564008FD03D /* BattleViewController.swift */,
 				01CBE57E1E96001600120793 /* Main.storyboard */,
 				01CBE5841E96001600120793 /* Assets.xcassets */,
 				01CBE5861E96001600120793 /* LaunchScreen.storyboard */,
@@ -161,11 +167,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				011445901E976564008FD03D /* BattleViewController.swift in Sources */,
 				01CBE57D1E96001600120793 /* ViewController.swift in Sources */,
 				01CBE5951E96459A00120793 /* CDHelper.swift in Sources */,
 				01CBE57B1E96001600120793 /* AppDelegate.swift in Sources */,
 				01CBE5831E96001600120793 /* Poke_Go.xcdatamodeld in Sources */,
 				01CBE5971E965CA400120793 /* PokemonAnnotation.swift in Sources */,
+				0114458E1E976539008FD03D /* BattleScene.swift in Sources */,
 				01CBE5931E963F0900120793 /* PokedoxViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -334,6 +342,7 @@
 				01CBE58E1E96001600120793 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
