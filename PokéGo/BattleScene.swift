@@ -76,13 +76,19 @@ class BattleScene : SKScene, SKPhysicsContactDelegate {
         self.pokemonSprite.physicsBody?.mass = 5.0
         
         
-      //Movements of the pokemon
+        //Movements of the pokemon
         
         let moveRight = SKAction.moveBy(x: 100, y: 0, duration: 3.0)
         //A sequence for movement of the pokemon
         let sequence = SKAction.sequence([moveRight, moveRight.reversed(), moveRight.reversed(), moveRight])
         //To keep the movement of pokemon forever
         self.pokemonSprite.run(SKAction.repeatForever(sequence))
+        
+        //Bitmasks
+        self.pokemonSprite.physicsBody?.categoryBitMask = kPokemonCategory
+        self.pokemonSprite.physicsBody?.collisionBitMask = kEdgeCategory
+        self.pokemonSprite.physicsBody?.contactTestBitMask = kPokeballCategory
+        
         
     }
     
@@ -105,6 +111,13 @@ class BattleScene : SKScene, SKPhysicsContactDelegate {
         self.pokeballSprite.physicsBody?.affectedByGravity = true
         self.pokeballSprite.physicsBody?.isDynamic = true
         self.pokeballSprite.physicsBody?.mass = 0.5
+        
+        
+        //Setup bitmasks of pokeball
+        self.pokeballSprite.physicsBody?.categoryBitMask = kPokeballCategory
+        self.pokeballSprite.physicsBody?.contactTestBitMask = kPokemonCategory
+        self.pokeballSprite.physicsBody?.collisionBitMask = kPokemonCategory | kEdgeCategory
+        
         
     }
     
