@@ -69,6 +69,12 @@ class BattleScene : SKScene, SKPhysicsContactDelegate {
         
         self.addChild(pokemonSprite)
         
+        //Pokemon physics
+        self.pokemonSprite.physicsBody = SKPhysicsBody(rectangleOf: kPokemonSize)
+        self.pokemonSprite.physicsBody?.isDynamic = false
+        self.pokemonSprite.physicsBody?.affectedByGravity = false
+        self.pokemonSprite.physicsBody?.mass = 5.0
+        
         
       //Movements of the pokemon
         
