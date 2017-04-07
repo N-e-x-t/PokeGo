@@ -104,7 +104,7 @@ class BattleScene : SKScene, SKPhysicsContactDelegate {
         
         //Movements of the pokemon
         
-        let moveRight = SKAction.moveBy(x: 100, y: 0, duration: 3.0)
+        let moveRight = SKAction.moveBy(x: 100, y: 0, duration: 2.0)
         //A sequence for movement of the pokemon
         let sequence = SKAction.sequence([moveRight, moveRight.reversed(), moveRight.reversed(), moveRight])
         //To keep the movement of pokemon forever
@@ -137,7 +137,7 @@ class BattleScene : SKScene, SKPhysicsContactDelegate {
         self.pokeballSprite.physicsBody = SKPhysicsBody(circleOfRadius: self.pokeballSprite.frame.size.width/2)
         self.pokeballSprite.physicsBody?.affectedByGravity = true
         self.pokeballSprite.physicsBody?.isDynamic = true
-        self.pokeballSprite.physicsBody?.mass = 0.5
+        self.pokeballSprite.physicsBody?.mass = 3.0
         
         
         //Setup bitmasks of pokeball
@@ -179,7 +179,7 @@ class BattleScene : SKScene, SKPhysicsContactDelegate {
     func throwPokeball() {
         
         self.canThroughPokeball = false
-        let dt : CGFloat = 1.0/50
+        let dt : CGFloat = 1.0/5.0
         let distance = CGVector(dx: self.touchPoint.x - self.pokeballSprite.position.x, dy: self.touchPoint.y - self.pokeballSprite.position.y)
         let velocity = CGVector(dx: distance.dx/dt, dy: distance.dy/dt)
         self.pokeballSprite.physicsBody?.velocity = velocity
