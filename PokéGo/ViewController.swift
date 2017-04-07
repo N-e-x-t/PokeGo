@@ -148,6 +148,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                self.present(battle, animated: true, completion: nil)
                 
                print("in range")
+                self.mapView.removeAnnotation(view.annotation!)
+
             } else {
                 print ("Out of range")
             }
