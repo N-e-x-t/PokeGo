@@ -16,9 +16,22 @@ class BattleScene : SKScene, SKPhysicsContactDelegate {
     var pokemonSprite : SKSpriteNode!
     var pokeballSprite : SKSpriteNode!
     
-    //define constants
+    //Define constants
     let kPokemonSize = CGSize(width: 100, height: 100)
     let kPokeballSize = CGSize(width: 50, height: 50)
+    
+    
+    //Define BitCategories
+    let kPokeballCategory : UInt32 = 0x1 << 0
+    let kPokemonCategory : UInt32 = 0x1 << 1
+    let kEdgeCategory : UInt32 = 0x1 << 2
+    
+    
+    //Physics variable setup
+    var velocity : CGPoint = CGPoint.zero
+    var touchPoint : CGPoint = CGPoint()
+    var canThroughPokeball : Bool = false
+    
     
     //To move/load the game scene in the view
     override func didMove(to view: SKView) {
@@ -80,6 +93,13 @@ class BattleScene : SKScene, SKPhysicsContactDelegate {
         self.pokeballSprite.zPosition = 1
         
         self.addChild(pokeballSprite)
+        
+        //Setup pokeball physics
+        self.pokeballSprite.physicsBody = SKPhysicsBody(circleOfRadius: self.pokeballSprite.frame.size.width/2)
+        self.pokeballSprite.physicsBody?.affectedByGravity = true
+        self.pokeballSprite.physicsBody?.isDynamic = true
+        self.pokeballSprite.physicsBody?.mass = 0.5
+        
     }
     
 }
